@@ -7,8 +7,7 @@
 * [3. Objetivos de aprendizagem](#3-objetivos-de-aprendizagem)
 * [4. Considerações gerais](#4-considerações-gerais)
 * [5. Critérios de aceitação mínimos do projeto](#5-critérios-de-aceitação-mínimos-do-projeto)
-* [6. Pistas, tips e leituras complementares](#6-pistas-tips-e-leituras-complementares)
-* [7 HTTP API Checklist](#7-http-api-checklist)
+* [6. Desenvolvedoras](#6-desenvolvedoras)
 
 ## 1. Prefácio
 
@@ -44,8 +43,8 @@ _endpoints_ (pontos de conexão ou URLs) e nos pedem para completar a aplicaçã
 Isto implica que teremos que começar a ler a implementação existente, e
 familiarizar-nos com a _stack_ escolhida ([Node.js](https://nodejs.org/) e
 [Express](https://expressjs.com/)) e complementá-la com um motor de banco de dados,
-no qual você deverá escolher entre [MongoDB](https://www.mongodb.com/),
-[PostgreSQL](https://www.postgresql.org/) e [MySQL](https://www.mysql.com/).
+no qual escolhemos o 
+[PostgreSQL](https://www.postgresql.org/).
 
 O cliente nos deu um
 [link](https://app.swaggerhub.com/apis-docs/ssinuco/BurgerQueenAPI/2.0.0)
@@ -54,23 +53,22 @@ iremos expor por HTTP.
 Lá podemos encontrar todos os detalhes que os _endpoints_ deve
 implementar na aplicação, que parâmetros esperam, o que devem responder, etc.
 
-O objetivo de aprendizagem principal é adquirir experiência com o **Node.js**
+O objetivo de aprendizagem principal foi adquirir experiência com o **Node.js**
 como ferramenta para desenvolvimento de _aplicações de servidor_, junto com uma série
 de outras ferramentas comumente utilizadas nesse contexto (Express como framework,
 MongoDB, PostgreSQL ou MySQL como base de dados, containers de docker, etc).
 
-Neste projeto, você desenvolverá um servidor web que deverá _servir_ `JSON`
+Neste projeto, desenvolvemos um servidor web que deverá _servir_ `JSON`
 através de uma conexão `HTTP`, e implantá-lo em um servidor na nuvem.
 
-Ao final do projeto, você deverá estar familiarizada com conceitos como **rotas**
+Neste, projeto, tivemos familiarização com conceitos como **rotas**
 (_routes_), **URLs**, **HTTP** (verbos, request, response, headers, body, status
 codes, etc), **JSON**, **JWT** (_JSON Web Tokens_), **conexão com uma base de dados**
-(`MongoDB`, `PostgreSQL` ou `MySQL`), **variables de ambiente**, **deployment**,
+(`PostgreSQL`), **variables de ambiente**, **deployment**,
 **containers de `docker`**, etc.
 
 ## 3. Objetivos de aprendizagem
 
-Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projeto. Pense nisso para decidir sua estratégia de trabalho.
 
 ### Node.js
 
@@ -166,6 +164,8 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 - [ ] **Uso e criação de middleware**
 
+### Sequelize
+
 ### HTTP
 
 - [ ] **Consulta ou solicitação (request) e resposta (response).**
@@ -235,34 +235,6 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 - [ ] **Cloud Functions**
 
-### MongoDB
-
-- [ ] **Operações CRUD (Create-Read-Update-Delete)**
-
-  <details><summary>Links</summary><p>
-
-  * [MongoDB CRUD Operations - Docs (em inglês)](https://docs.mongodb.com/manual/crud/)
-  * [Insert Documents - Docs (em inglês)](https://docs.mongodb.com/manual/tutorial/insert-documents/)
-  * [Query Documents - Docs (em inglês)](https://docs.mongodb.com/manual/tutorial/query-documents/)
-  * [Update Documents - Docs (em inglês)](https://docs.mongodb.com/manual/tutorial/update-documents/)
-  * [Delete Documents - Docs (em inglês)](https://docs.mongodb.com/manual/tutorial/remove-documents/)
-</p></details>
-
-- [ ] **Modelos e esquemas de dados**
-
-  <details><summary>Links</summary><p>
-
-  * [Schema Validation - Docs (em inglês)](https://docs.mongodb.com/manual/core/schema-validation/)
-  * [Data Model Design - Docs (em inglês)](https://docs.mongodb.com/manual/core/data-model-design/)
-</p></details>
-
-- [ ] **Recuperação e restauração (backup/restore)**
-
-  <details><summary>Links</summary><p>
-
-  * [MongoDB Backup Methods - Docs (em inglês)](https://docs.mongodb.com/manual/core/backups/)
-</p></details>
-
 ### PostgreSQL
 
 - [ ] **Cliente de terminal psql**
@@ -284,30 +256,6 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
   <details><summary>Links</summary><p>
 
   * [Chapter 26. Backup and Restore - Docs (em inglês)](https://www.postgresql.org/docs/14/backup.html)
-</p></details>
-
-### MySQL
-
-- [ ] **Cliente de terminal mysql**
-
-  <details><summary>Links</summary><p>
-
-  * [The MySQL Command-Line Client - Docs (em inglês)](https://dev.mysql.com/doc/refman/8.0/en/mysql.html)
-</p></details>
-
-- [ ] **Tipos de dados**
-
-  <details><summary>Links</summary><p>
-
-  * [Chapter 11 Data Types - Docs (em inglês)](https://dev.mysql.com/doc/refman/8.0/en/data-types.html)
-</p></details>
-
-- [ ] **Backup e restauração (backup/restore)**
-
-  <details><summary>Links</summary><p>
-
-  * [Chapter 7 Backup and Recovery - Docs (em inglês)](https://dev.mysql.com/doc/refman/8.0/en/backup-and-recovery.html)
-  * [mysqldump — A Database Backup Program - Docs (em inglês)](https://dev.mysql.com/doc/refman/8.0/en/mysqldump.html)
 </p></details>
 
 ### Bases de dados
@@ -347,42 +295,19 @@ Reflita e depois enumere os objetivos que quer alcançar e aplique no seu projet
 
 ## 4. Considerações gerais
 
-Este projeto será realizado em duplas e pode estar integrado com o projeto
-[Burger Queen API client](../04-burger-queen-api-client)
-que a equipe de Frontend developers do seu squad desenvolve simultaneamente.
+O projeto pode estar integrado com o projeto
+[Burger Queen API client](../04-burger-queen-api-client), parte Frontend.
 
-A lógica do projeto deve estar implementada totalmente em JavaScript (ES6).
-Neste projeto está permitido usar bibliotecas ou frameworks, assim como
-extensões para a linguagem com `babel` (neste caso você incluir um
-comando `npm build`).
+A lógica do projeto foi implementada totalmente em JavaScript (ES6).
 
-Os testes deven cobrir um mínimo de 90% de _statements_, _functions_,
-_lines_ e _branches_. Embora o boilerplate não inclua as configurações para
-testes unitários, estes são obrigatórios.
 
 Outro requisito da equipe de QA do nosso cliente é realizar
 **testes _end-to-end_**, que usaremos para verificar o comportamento desde o
-ponto de vista de HTTP, desde fora do servidor. Estes testes, diferente dos
-testes unitarios, não testam cada parte separadamente, mas testam a
-aplicação completa, do princípio ao fim. Esses testes, por não fazerem uso direto
-do código-fonte da aplicação, podem ser executados diretamente em uma URL
-remota, pois a interface em teste é HTTP.
+ponto de vista de HTTP, desde fora do servidor.
 
 O _boilerplate_ já contém o setup e configuração
 necessária para executar todos os tests _end-to-end_ com o comando `npm run test:e2e`.
 
-```sh
-# Execute testes e2e na instância local. Isso levanta a aplicação com npm
-# start e execute os tests na URL desta instancia (por padrão
-# http://127.0.0.1:8080).
-npm run test:e2e
-
-# Execute testes e2e em URL remoto
-REMOTE_URL=<TODO: colocar URL> npm run test:e2e
-```
-
-Os testes _end-to-end_ já estão concluidos no _boilerplate_, então pode
-usá-los como um guia de implementação e lista de verificação de integridade.
 
 ## 5. Critérios de aceitação mínimos do projeto
 
@@ -390,7 +315,7 @@ usá-los como um guia de implementação e lista de verificação de integridade
 
 Conforme estabelecido pela
 [documentação](https://app.swaggerhub.com/apis-docs/ssinuco/BurgerQueenAPI/2.0.0)
-entregue pelo nosso cliente, a API deve expor os seguintes endpoints:
+entregue pelo nosso cliente, a API expõe os seguintes endpoints:
 
 #### 5.1,1 `/`
 
@@ -472,20 +397,14 @@ Nossa aplicação usa as seguintes variáveis de ambiente:
 
 ### 5.3 Implantação (Deployment)
 
-Nosso cliente nos informou que a sua equipe de _devops_ está sempre com muitas
-tarefas, portanto, pediu como requesito que a aplicação esteja configurada
+Banco de dados: Postgresql
+
+A aplicação esta configurada
 com `docker-compose` para que possa ser implantada sem dificuldades em qualquer
 ambiente.
 
-O _boilerplate_ já conta com uma configuração incial de `docker-compose` para
-a aplicação de node, sua tarefa será estender essa configuração para incluir a
-configuração do banco de dados escolhido.
-Leve em consideração que como terá dois servidores rodando sobre uma mesma
-configuração, deverá colocar os serviços em diferentes portas.
 
-Para este projeto te recomendamos a usar `docker-compose` localmente (em seu
-computador) para executar a aplicação junto com a base de dados
-selecionada. Por outro lado, em relação a implantação, não é obrigatório usar
+Por outro lado, em relação a implantação, não é obrigatório usar
 `docker-compose`, você pode escolher o provedor (ou provedores) que preferir junto
 com o mecanismo de implantação e estratégia de hospedagem. Te recomendamos
 explorar as seguintes opcões:
@@ -512,53 +431,27 @@ podemos usar em conjunto com qualquer uma das opções mencionadas acima.
 boa opção para hospedar a base de dados de produção, que podemos usar em
 conjunto com qualquer uma das opções mencionadas acima.
 
-Se tiver dúvidas sobre as diferentes (e múltiplas) opções de implantação,
-não hesite em consultar seus colegas e mentores.
+***
+## 6. Desenvolvedoras
 
-## 6. Pistas, tips e leituras complementares
+<center>
 
-* [Express](https://expressjs.com/)
-* [MongoDB](https://www.mongodb.com/)
-* [PostgreSQL](https://www.postgresql.org/)
-* [MySQL](https://www.mysql.com/)
-* [docker](https://docs.docker.com/)
-* [docker compose](https://docs.docker.com/compose/)
-* [Postman](https://www.getpostman.com)
-* [Variável de ambiente - Wikipedia](https://pt.wikipedia.org/wiki/Variável_de_ambiente)
-* [`process.env` - Node.js docs](https://nodejs.org/api/process.html#process_process_env)
+**Desenvolvido por:**
+<br>
+   Myllena M. Martins <br>
+  [Linkedin](https://www.linkedin.com/in/myllenamirandamartins/) | [Github](https://github.com/myllenammartins)
+  <br>
+  Renata Ribeiro <br> 
+  [Linkedin](https://www.linkedin.com/in/rbcribeiro/) | [Github](https://github.com/rbcribeiro)
+
+</center>
 
 ***
 
-## 7 HTTP API Checklist
 
-### 7.1 `/`
+<div align="center">
 
-* [ ] `GET /`
+<br>
+  <img align="center" alt="git" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" /> <img align="center" alt="Rafa-Js" height="30" width="40" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg"> <img align="center" alt="vscode" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vscode/vscode-original.svg" /> <img align="center" alt="Jest" height="30" width="40" src="https://www.svgrepo.com/show/353930/jest.svg" /> <img  align="center" alt="Node" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" /> <img  align="center" alt="Swagger" height="30" width="40" src="https://user-images.githubusercontent.com/25181517/186711335-a3729606-5a78-4496-9a36-06efcc74f800.png" /> <img  align="center" alt="Express" height="30" width="40" src="https://user-images.githubusercontent.com/25181517/183859966-a3462d8d-1bc7-4880-b353-e2cbed900ed6.png" /> <img  align="center" alt="PostgreSQL" height="30" width="40" src="https://user-images.githubusercontent.com/25181517/117208740-bfb78400-adf5-11eb-97bb-09072b6bedfc.png" /> <img  align="center" alt="Sequelize" height="30" width="40" src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/sequelize/sequelize-original-wordmark.svg" />
 
-### 7.2 `/auth`
-
-* [ ] `POST /auth`
-
-### 7.3 `/users`
-
-* [ ] `GET /users`
-* [ ] `GET /users/:uid`
-* [ ] `POST /users`
-* [ ] `PATCH /users/:uid`
-* [ ] `DELETE /users/:uid`
-
-### 7.4 `/products`
-
-* [ ] `GET /products`
-* [ ] `GET /products/:productid`
-* [ ] `POST /products`
-* [ ] `PATCH /products/:productid`
-* [ ] `DELETE /products/:productid`
-
-### 7.5 `/orders`
-
-* [ ] `GET /orders`
-* [ ] `GET /orders/:orderId`
-* [ ] `POST /orders`
-* [ ] `PATCH /orders/:orderId`
-* [ ] `DELETE /orders/:orderId`
+</br>
