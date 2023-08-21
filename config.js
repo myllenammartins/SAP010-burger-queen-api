@@ -1,36 +1,60 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-const dbConfig = {
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  database: process.env.DB_NAME,
-  dialect: process.env.DB_DIALECT,
-  adminEmail: process.env.DB_ADMIN_EMAIL,
-  adminPassword: process.env.DB_ADMIN_PASSWORD,
+const environment = process.env.NODE_ENV || 'development';
+
+const config = {
+  development: {
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    secret: process.env.JWT_SECRET,
+    remoteUrl: process.env.REMOTE_URL || `http://127.0.0.1:${process.env.PORT}`,
+    adminEmail: process.env.DB_ADMIN_EMAIL,
+    adminPassword: process.env.DB_ADMIN_PASSWORD,
+    port: process.env.PORT || 8888,
+  },
+  test: {
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    secret: process.env.JWT_SECRET,
+    remoteUrl: process.env.REMOTE_URL || `http://127.0.0.1:${process.env.PORT}`,
+    adminEmail: process.env.DB_ADMIN_EMAIL,
+    adminPassword: process.env.DB_ADMIN_PASSWORD,
+    port: process.env.PORT || 8888,
+  },
+  production: {
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
+    host: process.env.DB_HOST,
+    dialect: process.env.DB_DIALECT,
+    secret: process.env.JWT_SECRET,
+    remoteUrl: process.env.REMOTE_URL || `http://127.0.0.1:${process.env.PORT}`,
+    adminEmail: process.env.DB_ADMIN_EMAIL,
+    adminPassword: process.env.DB_ADMIN_PASSWORD,
+    port: process.env.PORT || 8888,
+  },
 };
 
-const secrets = process.env.JWT_SECRETS;
-const port = process.env.PORT || 8888;
-const remoteUrl = process.env.REMOTE_URL || `http://127.0.0.1:${port}`;
+const envConfig = config[environment];
 
-const sequelize = new Sequelize(
-  dbConfig.database,
-  dbConfig.user,
-  dbConfig.password,
-  {
-    host: dbConfig.host,
-    port: dbConfig.port,
-    dialect: dbConfig.dialect,
-  },
-);
+const sequelize = new Sequelize(envConfig.database, envConfig.username, envConfig.password, {
+  host: envConfig.host,
+  dialect: envConfig.dialect,
+});
 
 module.exports = {
-  dbConfig,
-  secrets,
-  port,
-  remoteUrl,
+  dbConfig: envConfig,
+  secret: envConfig.secret,
+  port: envConfig.port,
+  remoteUrl: envConfig.remoteUrl,
   sequelize,
+  adminEmail: envConfig.adminEmail,
+  adminPassword: envConfig.adminPassword,
 };

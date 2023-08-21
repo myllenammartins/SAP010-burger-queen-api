@@ -1,5 +1,5 @@
 node_modules/
-secrets.env
+secret.env
 docs
 .env
 config/

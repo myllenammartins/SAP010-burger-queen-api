@@ -215,8 +215,8 @@ const config = require("./config");
 const pgClient = new pg.Client({ connectionString: config.dbUrl });
 
 pgClient.connect();
-pgClient.query("SELECT NOW()", (err, res) => {
-  console.log(err, res);
+pgClient.query("SELECT NOW()", (err, resp) => {
+  console.log(err, resp);
   pgClient.end();
 });
 ```

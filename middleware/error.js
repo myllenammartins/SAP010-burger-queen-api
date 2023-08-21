@@ -10,7 +10,6 @@ const isKnownHTTPErrorStatus = (num) => (
   typeof num === 'number' && Object.keys(httpErrors).indexOf(`${num}`) >= 0
 );
 
-// eslint-disable-next-line no-unused-vars
 module.exports = (err, req, resp, next) => {
   const statusCode = (isKnownHTTPErrorStatus(err))
     ? err
@@ -19,7 +18,10 @@ module.exports = (err, req, resp, next) => {
 
   if (statusCode === 500) {
     console.error(statusCode, message);
+    console.error('Original Error:', err); // Log the original error
   }
+
+  console.error(`Error ${statusCode}: ${message}`);
 
   resp.status(statusCode).json({ statusCode, message });
   next();

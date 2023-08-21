@@ -6,7 +6,7 @@ const routes = require('./routes');
 const pkg = require('./package.json');
 const sequelize = require('./database'); // Import the configured Sequelize instance from database.js
 
-const { port, secrets } = config;
+const { port, secret } = config;
 const app = express();
 
 app.set('config', config);
@@ -14,7 +14,7 @@ app.set('pkg', pkg);
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-app.use(authMiddleware(secrets));
+app.use(authMiddleware(secret));
 
 routes(app, (err) => {
   if (err) {
