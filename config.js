@@ -14,7 +14,7 @@ const dbConfig = {
 };
 const adminEmail = process.env.DB_ADMIN_EMAIL;
 const adminPassword = process.env.DB_ADMIN_PASSWORD;
-const secret = process.env.JWT_SECRET;
+const secret = process.env.JWT_SECRET || 'admin-secret';
 const port = process.env.PORT || 8888;
 const remoteUrl = process.env.REMOTE_URL || `http://127.0.0.1:${port}`;
 
