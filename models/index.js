@@ -4,15 +4,18 @@ const process = require('process');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const configPath = path.join(__dirname, '..', 'config', 'config.json');
-// eslint-disable-next-line import/no-dynamic-require
-const config = require(configPath)[env];
 const db = {};
 let sequelize;
-if (config.use_env_variable === 'DATABASE_URL') {
-  sequelize = new Sequelize(process.env.DATABASE_URL, config);
+if (process.env.DATABASE_URL) {
+  sequelize = new Sequelize(process.env.DATABASE_URL, {
+    dialect: 'postgres',
+    protocol: 'postgres',
+    dialectOptions: {
+      ssl: true,
+    },
+  });
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  throw new Error('A variável de ambiente DATABASE_URL não está definida.');
 }
 fs
   .readdirSync(__dirname)
