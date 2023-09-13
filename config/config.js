@@ -1,4 +1,6 @@
-const config = {
+const Sequelize = require('sequelize');
+
+const sequelize = new Sequelize({
     development: {
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
@@ -35,6 +37,6 @@ const config = {
       adminPassword: process.env.ADMIN_PASSWORD,
       port: process.env.DB_PORT || 5432
     }
-  };
+  });
   
-  module.exports = config;
+  module.exports = sequelize;
